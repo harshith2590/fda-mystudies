@@ -295,6 +295,7 @@ class ActivitiesViewController: UIViewController {
       self.refreshControl?.endRefreshing()
       self.fetchActivityAnchorDateResponse()
     }
+      self.removeProgressIndicator()
   }
 
   /// Verifies whether if FetalKick Task is Still running and calculate the time difference.
@@ -1229,7 +1230,7 @@ extension ActivitiesViewController: NMWebServiceDelegate {
   }
 
   func finishedRequest(_ manager: NetworkManager, requestName: NSString, response: AnyObject?) {
-    
+    print("\nResponse: \n", response)
     if requestName as String == ResponseMethods.activityState.method.methodName {
       self.sendRequesToGetActivityList()
     } else if requestName as String == WCPMethods.activityList.method.methodName {
@@ -1254,7 +1255,7 @@ extension ActivitiesViewController: NMWebServiceDelegate {
 
     } else if requestName as String == ResponseMethods.processResponse.method.methodName {
       print("6removeProgressIndicator---")
-      self.removeProgressIndicator()
+//      self.removeProgressIndicator()
       self.checkForActivitiesUpdates()
 
     } else if requestName as String == WCPMethods.studyUpdates.method.methodName {
@@ -1287,7 +1288,7 @@ extension ActivitiesViewController: NMWebServiceDelegate {
       }
     } else if requestName as String == EnrollmentMethods.updateStudyState.method.methodName {
       print("8removeProgressIndicator---")
-      self.removeProgressIndicator()
+//      self.removeProgressIndicator()
     }
   }
 
@@ -1620,7 +1621,6 @@ extension ActivitiesViewController: ORKTaskViewControllerDelegate {
         self.lastActivityResponse = response
         // Save response to server.
        let valActivityStatus = self.updateNewRunCountStatusToComplete(with: false)!
-        
         ResponseServices().processUpdateResponse(responseData: response ?? [:], activityStatus: valActivityStatus, delegate: self)
 
       }
