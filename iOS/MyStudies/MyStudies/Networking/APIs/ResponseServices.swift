@@ -397,6 +397,7 @@ class ResponseServices: NSObject {
   /// Handles `Activity` status response
   /// - Parameter response: Webservice response
   func handleGetActivityStatesResponse(response: [String: Any]) {
+      print("\n-----------ActivityState response: \n", response)
     let user = User.currentUser
     if let activites = response[kActivites] as? [[String: Any]] {
       if Study.currentStudy != nil {

@@ -613,7 +613,7 @@ class ActivitiesViewController: UIViewController {
         delegate: strongSelf
       )
     }
-
+    print("\n---------Activity ststus to DB 0: \n", activity.userParticipationStatus.status.description)
     /// Update participationStatus to DB
     DBHandler.updateParticipationStatus(for: activity)
 
@@ -637,7 +637,12 @@ class ActivitiesViewController: UIViewController {
         activityStatus.incompletedRuns = activity.incompletedRuns
         activityStatus.totalRuns = activity.totalRuns
         activityStatus.activityVersion = activity.version
+        activity.userParticipationStatus.status = status
         
+        
+        print("\n---------Activity ststus: \(String(describing: activity.actvityId)) \n", activity.userParticipationStatus.status.description)
+        print("\n---------Expected Activity ststus: \n", status.description)
+        print("\n---------User Activity ststus: \n", activityStatus.status.description)
         /// Update participationStatus to DB
         DBHandler.updateParticipationStatus(for: activity)
         
@@ -898,7 +903,7 @@ class ActivitiesViewController: UIViewController {
       activityStatus: activityStatus,
       delegate: self
     )
-
+    print("\n---------Activity ststus to DB -1: \n", activity.userParticipationStatus.status.description)
     // Update User Participation Status to DB
     DBHandler.updateParticipationStatus(for: activity)
 

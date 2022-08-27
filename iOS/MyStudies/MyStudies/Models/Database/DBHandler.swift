@@ -1295,7 +1295,7 @@ class DBHandler: NSObject {
           && $0.studyId == activity.studyId
       }
     let dbActivity = studies.last
-
+      print("\n---------Activity ststus to DB: \n", activity.userParticipationStatus.status.description)
     try? realm.write {
       dbActivity?.currentRunId = activity.userParticipationStatus.activityRunId
       dbActivity?.participationStatus = activity.userParticipationStatus.status.rawValue

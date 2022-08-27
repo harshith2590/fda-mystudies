@@ -798,6 +798,8 @@ class UserActivityStatus {
         statusValue = statusValue.lowercased()
 
         if ActivityStatus.inProgress.paramValue.lowercased() == statusValue {
+            print("\n----------inprogress--------\n")
+            print("\n-Activity-\(self.activityId)-RunId-\(self.activityRunId)\n")
           self.status = .inProgress
 
         } else if ActivityStatus.yetToJoin.paramValue.lowercased() == statusValue {

@@ -195,6 +195,8 @@ class Study: Hashable {
   /// Updates `Study` current activity
   /// - Parameter activity: Instance of Activity.
   class func updateCurrentActivity(activity: Activity) {
+      print("\n---------Activity ststus: Update current \(String(describing: activity.actvityId)) \n", activity.userParticipationStatus.status.description)
+
     Study.currentActivity = activity
   }
 
